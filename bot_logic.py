@@ -322,17 +322,17 @@ class BotLogic:
         return False, None
 
     def _send_delayed_greeting(self, chat_id, member_id, first_name):
-        """Fungsi yang akan dijalankan oleh Timer setelah 5 menit."""
+        """Function run by Timer after 5 minutes."""
         now_utc = self._get_current_utc_time().strftime('%Y-%m-%d %H:%M:%S')
         
-        # Simpan member ke DB
+        # Save member to DB
         self._update_member_info(member_id, first_name, now_utc, last_interacted_date=now_utc)
         
-        # Siapkan pesan
+        # Prepare message
         welcome_text = random.choice(self.responses.get("GREET_NEW_MEMBERS_DELAYED", [])).format(name=f"[{first_name}](tg://user?id={member_id})")
         
         try:
-            # Kirim pesan
+            # Send message
             self.bot.send_message(chat_id, welcome_text, parse_mode="Markdown")
             logger.info(f"Delayed greeting sent to new member: {member_id}")
         except Exception as e:
@@ -343,8 +343,7 @@ class BotLogic:
             for member in message.new_chat_members:
                 logger.info(f"New member {member.id} detected. Scheduling delayed greeting in 5 minutes (300 seconds)...")
                 
-                # Gunakan threading.Timer untuk menunda operasi tanpa memblokir Waitress
-                # FIX: Replaced time.sleep(300) with threading.Timer
+                # FIX: Use threading.Timer to prevent blocking Waitress
                 first_name = (member.first_name or "fren").replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace('`', '\\`')
                 
                 timer = threading.Timer(
@@ -371,20 +370,37 @@ class BotLogic:
                 hype_text = "LFG! HODL tight, fren!" 
                 self.bot.answer_callback_query(call.id, text=hype_text, show_alert=True)
             elif call.data == "about":
-                self.bot.answer_callback_query(call.id)
                 about_text = (" 🚀  *$NPEPE* is the next evolution of meme power!\n"
                               "We are a community-driven force born on *Pump.fun*.\n\n"
                               "This is 100% pure, unadulterated meme energy. Welcome to the NPEPEVERSE!  🐸 ")
-                self.bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=about_text, reply_markup=self.main_menu_keyboard(), parse_mode="Markdown")
+                
+                # FIX: Check if message is already displaying this content to avoid 'message is not modified' error
+                if call.message.text != about_text:
+                    self.bot.answer_callback_query(call.id)
+                    self.bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=about_text, reply_markup=self.main_menu_keyboard(), parse_mode="Markdown")
+                else:
+                    self.bot.answer_callback_query(call.id, text="You are already viewing the About page!", show_alert=False)
+
             elif call.data == "ca":
-                self.bot.answer_callback_query(call.id)
                 ca_text = f" 🔗  *Contract Address:*\n`{Config.CONTRACT_ADDRESS()}`"
-                self.bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=ca_text, reply_markup=self.main_menu_keyboard(), parse_mode="Markdown")
+                
+                # FIX: Check if message is already displaying this content to avoid 'message is not modified' error
+                if call.message.text != ca_text:
+                    self.bot.answer_callback_query(call.id)
+                    self.bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=ca_text, reply_markup=self.main_menu_keyboard(), parse_mode="Markdown")
+                else:
+                    self.bot.answer_callback_query(call.id, text="You are already viewing the Contract Address!", show_alert=False)
+
             else:
                 self.bot.answer_callback_query(call.id, text="Action not recognized.")
         except Exception as e:
             logger.error(f"Error in callback handler: {e}", exc_info=True)
             try:
+                # Handle 'message is not modified' gracefully
+                if "message is not modified" in str(e):
+                    logger.warning("Attempted to edit an unmodified message. Ignoring API error.")
+                    return
+                    
                 self.bot.answer_callback_query(call.id, text="Sorry, something went wrong!", show_alert=True)
             except:
                 pass
@@ -465,7 +481,7 @@ class BotLogic:
             
             # AI Response for Questions
             if self.groq_client and self._is_a_question(text):
-                # Dispatch AI processing to a separate thread to prevent blocking Waitress
+                # FIX: Dispatch AI processing to a separate thread to prevent blocking Waitress
                 threading.Thread(target=self._process_ai_response, args=(chat_id, text)).start()
                 return
             
@@ -500,7 +516,7 @@ class BotLogic:
             except Exception as ex:
                 logger.error(f"Failed to send fallback: {ex}")
 
-    # --- NEW SCHEDULED TASK FUNCTIONS ---
+    # --- SCHEDULED TASK FUNCTIONS ---
 
     def send_daily_random_greeting(self):
         """Task 1: Greets 3 random members daily (turn-based mode)."""
