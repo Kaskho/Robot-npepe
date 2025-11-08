@@ -1,0 +1,10 @@
+# Konfigurasi ini memberitahu Render untuk membangun dari Dockerfile.
+services:
+  - type: web
+    name: npepebot
+    # Ini adalah baris kunci:
+    # Secara eksplisit memberitahu Render untuk menggunakan Docker
+    # dan mencari Dockerfile di folder utama.
+    env: docker
+    # Kita tidak perlu startCommand atau buildCommand lagi.
+    plan: free
