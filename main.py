@@ -9,7 +9,7 @@ from waitress import serve
 
 logging.basicConfig(
     level=logging.INFO,
-    # FIX: Changed non-standard quotes (’...’) to standard single quotes ('...')
+    # FIX: Using standard straight quotes (') instead of smart quotes
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 Logger = logging.getLogger(__name__)
@@ -18,19 +18,16 @@ Bot = None
 Bot_logic = None
 
 # Initialize Bot
-# FIX: Changed 'Try' to lowercase 'try'
+# FIX: Using lowercase 'try'
 try: 
-    # FIX: Changed 'If' to lowercase 'if'
+    # FIX: Using lowercase 'if'
     if all([Config.BOT_TOKEN(), Config.WEBHOOK_BASE_URL(), Config.DATABASE_URL()]):
-        # FIX: Ensure 'Bot' instance is used consistently (was 'bot')
         Bot = telebot.TeleBot(Config.BOT_TOKEN(), threaded=False)
         Bot_logic = BotLogic(Bot) 
-    # FIX: Changed 'Else' to lowercase 'else'
+    # FIX: Using lowercase 'else'
     else:
-        # NOTE: Keeping this message in English for consistency
         Logger.critical("FATAL: Essential environment variables not found.")
 except Exception as e:
-    # NOTE: Keeping this message in English for consistency
     Logger.critical(f"Error occurred during bot initialization: {e}", exc_info=True)
 
 # Webhook for Telegram
@@ -38,7 +35,9 @@ except Exception as e:
 def webhook():
     if Bot_logic and request.headers.get('content-type') == 'application/json':
         try:
-            Bot_logic.check_and_run_schedules()
+            # FIX: Removed Bot_logic.check_and_run_schedules() here to prevent blocking Waitress
+            # and only process the incoming Telegram update.
+            
             Json_string = request.get_data().decode('utf-8')
             Update = telebot.types.Update.de_json(Json_string)
             Bot.process_new_updates([Update])
@@ -53,6 +52,7 @@ def webhook():
 def health_check():
     Logger.info("Ping 'Health Check' received.")
     if Bot_logic:
+        # Scheduled tasks are run here, triggered by the Uptime Monitor ping.
         Bot_logic.check_and_run_schedules()
     # Returns "204 No Content"
     return "", 204
