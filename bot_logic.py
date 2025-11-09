@@ -256,7 +256,7 @@ class BotLogic:
             return None
             
     def _load_initial_responses(self):
-        # --- VARIASI AWAL PENUH (Mengikuti Permintaan Jumlah Eksplisit) ---
+        # --- VARIASI AWAL PENUH ---
 
         return {
             # (20 VARIATIONS)
@@ -554,46 +554,6 @@ class BotLogic:
                 "Ribbit, ribbit! {tags}, don't let the noise consume you. Find quiet time and rest your mind.",
                 "Your well-being is the ultimate diamond hand, {tags}. Protect it fiercely by resting well.",
                 "Final warning for {tags}: We see you staring. Go away from the screen and get some rest! 🚫",
-                "Health Alert: {tags}, hydration levels are critical! Drink water, eat a vegetable, and stop staring at the green! Go!",
-                "You can't buy the dip if you're sleeping on the floor! {tags}, hit the bed and recharge. Mandatory 8 hours of sleep required. 🛌",
-                "Hey {tags}, your favorite frog bot requires you to spend 30 minutes offline with a pet or a loved one. Do it now! Base!",
-                "Ribbit! {tags}, your sanity is an asset. Protect it fiercely by stepping away from the charts and getting some air.",
-                "Mental health is paramount. {tags}, if you feel the anxiety creep, walk away. Come back when you're centered. WAGMI!",
-                "The charts are 24/7, but you are not. {tags}, schedule a break. Eat something that isn't processed meme food. 🍎",
-                "Don't trade on empty! {tags}, your brain requires fuel. Take a proper meal and reflect on your HODL strategy later.",
-                "Attention, {tags}! Stop trying to catch every candle. Catch up with your family instead. They miss you! 🥰",
-                "Your bot boss is ordering a break. {tags}, log off now and enjoy some non-crypto-related activity. LFG!",
-                "The only thing you should be watching right now is your favorite movie, {tags}. Take a mandatory rest period! 🎬",
-                "Sanity check {tags}! Remember, the best HODL strategy is a well-rested mind. Go get some sleep!",
-                "Emergency Health Broadcast: {tags}, put down the device. Your neck hurts. Your eyes hurt. Fix it now! 🤕",
-                "Prioritize the real world, {tags}. The gains will follow. Take care of your foundation: rest and food. 🏠",
-                "Hey {tags}, turn off the desktop monitor. Embrace the night/day and focus on your non-crypto life for a bit.",
-                "Ribbit! {tags}, the frog army requires maximum energy. That means eating a full meal! Go, go, go!",
-                "Warning: {tags} might be suffering from terminal chart fatigue. Solution: Mandatory rest and family time! 👨‍👩‍👧‍👦",
-                "The only leverage you should be using is the leverage to pull yourself away from the screen, {tags}.",
-                "To {tags}: Your dedication is amazing, but your well-being comes first. Take a break. We'll hold the line.",
-                "Go touch grass, {tags}! Seriously. Fresh air is required for optimal HODLing performance. 🌿",
-                "Friendly intervention for {tags}: What's your favorite food? Go eat it now. No charts until the plate is clean!",
-                "Hey {tags}, remember that friend/partner/family member? They exist! Go spend time with them! ❤️",
-                "Your sleep cycle matters, {tags}! Do not sacrifice rest for a candlestick. It's not worth it. 😴",
-                "Mandatory sanity break for {tags}! Go for a short walk and clear your head. The charts will still be there.",
-                "Ribbit! Protecting your health is part of the HODL plan. {tags}, take care of your body and mind.",
-                "Attention, {tags}! Log off. Log off. Log off. You need a break. We're here when you return.",
-                "The most valuable asset is your time with loved ones, {tags}. Don't lose it to trading. Enjoy life!",
-                "Hey {tags}, time to switch focus. Go read a book, listen to music, or do anything non-crypto.",
-                "You cannot win if you are running on fumes, {tags}. Refuel your body and your spirit!",
-                "The bot is sending positive, restful vibes to {tags}. Hope you find a moment of peace today. 🧘",
-                "Take a deep breath, {tags}. That dip/pump isn't the end/start of the world. Center yourself and rest.",
-                "Your family is your real WAGMI. {tags}, prioritize them over the fleeting market. Go enjoy their company!",
-                "Ribbit! The only green you should be focused on right now is a healthy meal, {tags}. Go eat!",
-                "Hey {tags}, your bot wants you to know that it's okay to miss a pump. It's not okay to miss sleep.",
-                "Alert: {tags} is due for a rest period. Shut down the screens and power down the brain. Recharge complete! 🔋",
-                "To {tags}: Remember the long term. That includes your long-term health. Be smart, take a break. 🧠",
-                "The $NPEPE community needs you healthy. {tags}, go grab that food/rest/love you deserve.",
-                "Hey {tags}, the best time to take a break was yesterday. The second best time is now. Go!",
-                "Ribbit, ribbit! {tags}, don't let the noise consume you. Find quiet time and rest your mind.",
-                "Your well-being is the ultimate diamond hand, {tags}. Protect it fiercely by resting well.",
-                "Final warning for {tags}: We see you staring. Go away from the screen and get some rest! 🚫",
                 "Your mental stack is overloaded, {tags}. Mandatory shutdown required. Go hug a fren!",
                 "Don't let the FUD and charts erode your sanity, {tags}. Protect your peace. Go offline now. 🛡️",
                 "The greatest risk isn't the chart, it's exhaustion. {tags}, go eat, sleep, and conquer tomorrow.",
@@ -609,7 +569,39 @@ class BotLogic:
                 "The chart will always be there, {tags}. Your body's clock is finite. Choose wisely. Sleep now!",
                 "Hey {tags}, your bot cares more about your health than your portfolio today. Go live life!",
                 "Ribbit! {tags}, take a moment to be grateful for your loved ones. Go tell them you care!",
-                "Final check {tags}: Screen off, food in stomach, mind clear. Now you can HODL properly! 💎"
+                "Final check {tags}: Screen off, food in stomach, mind clear. Now you can HODL properly! 💎",
+                "Sanity Protocol 005: {tags}, stop the scroll. Go stare at a wall for 5 minutes. Clear the cache!",
+                "Your focus is blurring, {tags}. Time to reset. Eat, rest, hug your pet, then return to HODL.",
+                "The $NPEPE team relies on healthy members! {tags}, please prioritize sleep over charts tonight.",
+                "Hey {tags}, we see you trying to micro-manage the dip. Stop. Go spend time with a human!",
+                "Ribbit! If you're feeling stressed, step back, {tags}. We'll make it. Sanity first, always.",
+                "Warning: Extended exposure to charts detected. {tags}, mandatory 30-minute break in effect.",
+                "Remember your commitment to health, {tags}! It's more important than today's price action.",
+                "Go grab a large glass of water, {tags}. Hydration is essential for diamond hands! 💧",
+                "The charts are a marathon. {tags}, pacing yourself means taking breaks. Take one now!",
+                "Hey {tags}, don't let the market control your emotions. Regroup, rest, and reset your mind.",
+                "Ribbit! To {tags}: Your dedication is noted. Now, go dedicate some time to yourself!",
+                "We need you sharp for the moon mission, {tags}. That means maximum rest! Go, go, go!",
+                "Your friends and family are waiting, {tags}. They are the real HODL. Go see them!",
+                "Mandatory break time for {tags}! The bot ensures you don't burn out. Enjoy the time off!",
+                "The greatest asset is your focus, {tags}. Don't erode it. Rest your eyes and mind.",
+                "Hey {tags}, wishing you a peaceful day away from the FUD. Go make some good memories!",
+                "Ribbit! {tags}, remember that perfect entry/exit isn't worth losing sleep over. Relax.",
+                "To {tags}: Your well-being is the coin we truly value. Guard it well with rest and food.",
+                "Go for a walk, {tags}. Change your environment, and come back with a clearer HODL mind.",
+                "Hey {tags}, your health is your wealth. Invest in rest today! The charts can wait.",
+                "Ribbit! {tags}, stop worrying about the market noise. Focus on your life and your love.",
+                "Warning: Excessive screen time detected. {tags}, please go interact with the real world now!",
+                "Final health decree: {tags}, eat a full meal and spend time with loved ones. No crypto allowed!",
+                "The $NPEPE community cares about you, {tags}. Please take care of your physical and mental health.",
+                "Hey {tags}, unplug for an hour. Silence the alerts. Your sanity needs it more than your portfolio.",
+                "Ribbit! {tags}, remember to balance your passion for crypto with your life outside the screen.",
+                "To {tags}: The frog demands rest! Close your tabs and go find some peace. LFG tomorrow!",
+                "Your family is the real 100x gem, {tags}. Cherish your time with them over the charts.",
+                "Hey {tags}, we appreciate your vigilance, but please don't forget to eat and hydrate!",
+                "Ribbit! {tags}, take a moment to be proud of your HODL, then go enjoy your life. You earned it!",
+                "The sun is shining (or the moon is out). {tags}, go enjoy the world outside the matrix!",
+                "Hey {tags}, keep those diamond hands steady, but let your eyes rest. Breaks are essential."
             ],
             "COLLABORATION_RESPONSE": [ 
                 "WAGMI! Love the energy! The best collab is a strong community. Be loud in here, raid on X, and let's make the NPEPEVERSE impossible to ignore! 🚀",
@@ -627,6 +619,7 @@ class BotLogic:
         self.bot.message_handler(content_types=['new_chat_members'])(self.greet_new_members)
         self.bot.message_handler(commands=['start', 'help'])(self.send_welcome)
         self.bot.callback_query_handler(func=lambda call: True)(self.handle_callback_query)
+        # Menambahkan 'photo' dan 'video' untuk memastikan entitas link juga terdeteksi di caption
         self.bot.message_handler(func=lambda message: True, content_types=['text', 'photo', 'video', 'sticker', 'document'])(self.handle_all_text)
     
     def main_menu_keyboard(self):
@@ -657,6 +650,7 @@ class BotLogic:
             if keyword in text_lower:
                 return True, f"Forbidden Keyword: {keyword}"
         
+        # Logika lama: Memeriksa tautan tidak sah yang bukan domain resmi
         if "http" in text_lower or "t.me" in text_lower:
             urls = re.findall(r'(https?://[^\s]+)|([\w\.-]+(?:\.[\w\.-]+)+)', text)
             urls_flat = [u[0] or u[1] for u in urls if u[0] or u[1]]
@@ -673,6 +667,31 @@ class BotLogic:
             
         return False, None
 
+    def _is_link_present(self, message):
+        """Memeriksa apakah pesan mengandung link (entities, text, atau caption)"""
+        
+        # Cek entities (URL, text_link) di pesan atau caption
+        if message.entities or message.caption_entities:
+            entities = message.entities if message.entities else message.caption_entities
+            for entity in entities:
+                if entity.type in ['url', 'text_link']:
+                    return True, "URL or Text Link entity detected."
+        
+        # Cek raw text (termasuk caption) untuk pola HTTP/HTTPS/WWW
+        text_to_check = message.text or message.caption or ""
+        if re.search(r'https?:\/\/[^\s]+|www\.[^\s]+', text_to_check, re.IGNORECASE):
+            # Lakukan pengecekan yang lebih ketat untuk memastikan itu bukan domain yang diperbolehkan
+            if self._is_spam_or_ad(message)[0]: # Jika _is_spam_or_ad menganggapnya tidak sah
+                return True, "Raw link detected."
+        
+        # Khusus untuk forward dari channel/grup lain yang sering menyisipkan link
+        if message.forward_from_chat or message.forward_from:
+             # Tidak selalu ada link, tapi jika ada entities yang menyertakan link promo, lebih baik dihapus.
+             if message.entities or message.caption_entities:
+                 return True, "Forwarded message with potential link entities."
+
+        return False, None
+        
     def _send_delayed_greeting(self, chat_id, member_id, first_name):
         """Function run by Timer after 5 minutes."""
         now_utc = self._get_current_utc_time().strftime('%Y-%m-%d %H:%M:%S')
@@ -778,7 +797,19 @@ class BotLogic:
                 is_exempt = user_id in self.admin_ids
                 if Config.GROUP_OWNER_ID() and str(user_id) == str(Config.GROUP_OWNER_ID()):
                     is_exempt = True
+                
                 if not is_exempt:
+                    # --- NEW LINK CHECK ---
+                    is_link, link_reason = self._is_link_present(message)
+                    if is_link:
+                        try:
+                            self.bot.delete_message(chat_id, message.message_id)
+                            logger.info(f"Deleted message {message.message_id} from {user_id} reason: {link_reason}")
+                            return # Stop processing after deletion
+                        except Exception as e:
+                            logger.error(f"Failed to delete link message: {e}")
+
+                    # --- EXISTING SPAM/AD CHECK ---
                     is_spam, reason = self._is_spam_or_ad(message)
                     if is_spam:
                         try:
